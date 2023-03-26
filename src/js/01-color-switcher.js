@@ -11,13 +11,16 @@ let timerId = null;
   function changeColor(){
     document.body.style.backgroundColor = getRandomHexColor();
    
+   
     startBtn.disabled = true;
+    stopBtn.disabled = false;
   }
 
   function stopChangeColor(){
     clearInterval(timerId);
 
-    startBtn.disabled = false;
+    startBtn.disabled =false;
+    stopBtn.disabled = true;
 
   }
 
