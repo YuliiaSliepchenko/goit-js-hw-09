@@ -3,10 +3,10 @@ import "flatpickr/dist/flatpickr.min.css";
 import Notiflix from 'notiflix';
 
 const startBtn = document.querySelector("[data-start]");
-const d = document.querySelector("span[data-days]");
-const h = document.querySelector("span[data-hours]");
-const m = document.querySelector("span[data-minutes]");
-const s =document.querySelector("span[data-seconds]");
+const dayOn = document.querySelector("span[data-days]");
+const hourOn = document.querySelector("span[data-hours]");
+const minOn = document.querySelector("span[data-minutes]");
+const secondOn =document.querySelector("span[data-seconds]");
 
 
 
@@ -25,8 +25,8 @@ const options = {
   onClose(selectedDates){
     if (selectedDates[0] <= new Date()) {
 Notiflix.Notify.failure("Please choose a date in the future");
-startBtn.disabled =true;
- } else{
+startBtn.disabled =true;}
+ else{
 startBtn.disabled = false;
 startBtn.addEventListener(click, createTimer)
 
@@ -39,10 +39,10 @@ function createTimer() {
         const ms = finishTime - currentTime;
 
         const {days , hours, minutes,seconds} = convertMs(ms)
-    d.textContent =addLeadingZero(days);
-    h.textContent = addLeadingZero(hours);
-    m.textContent = addLeadingZero(minutes);
-    s.textContent =addLeadingZero(seconds);
+        dayOn.textContent =addLeadingZero(days);
+        hourOn.textContent = addLeadingZero(hours);
+        minOn.textContent = addLeadingZero(minutes);
+        secondOn.textContent =addLeadingZero(seconds);
 
     if (ms < 1000) {
         clearInterval(timer);
