@@ -28,7 +28,7 @@ Notiflix.Notify.failure("Please choose a date in the future");
 startBtn.disabled =true;}
  else{
 startBtn.disabled = false;
-startBtn.addEventListener(click, createTimer)
+startBtn.addEventListener("click", createTimer);
 
 function createTimer() {
     timer = setInterval(() => {
