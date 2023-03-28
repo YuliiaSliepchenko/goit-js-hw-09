@@ -15,7 +15,6 @@ refs.form.addEventListener('submit', evt => {
 };
 let {amount,  firstDelay,  stepDelay } = values;
 for(i = 1; i <= amount; i +=1){
-
   createPromise(i, firstDelay)
   .then(({ position, delay }) => {
     Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
@@ -26,7 +25,6 @@ for(i = 1; i <= amount; i +=1){
   firstDelay += stepDelay;  
 }
 });
-
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
 return new Promise((resolve, reject) => { 
