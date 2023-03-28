@@ -14,13 +14,13 @@ refs.form.addEventListener('submit', evt => {
   stepDelay:Number(evt.target.elements.step.value),
 };
 let {amount,  firstDelay,  stepDelay } = values;
-for(i = 1; i <= amount; i +=1){
+for (i = 1; i <= amount; i += 1) {
   createPromise(i, firstDelay)
   .then(({ position, delay }) => {
-    Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+    Notify.success(`✅ Fulfilled promise ${i} in ${delay}ms`);
   })
   .catch(({ position, delay }) => {
-    Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+    Notify.failure(`❌ Rejected promise ${i} in ${delay}ms`);
   });
   firstDelay += stepDelay;  
 }
