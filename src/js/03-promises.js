@@ -15,12 +15,12 @@ refs.form.addEventListener('submit', evt => {
 };
 let {amount,  firstDelay,  stepDelay } = values;
 for (i = 1; i <= amount; i += 1) {
-  createPromise(i, firstDelay)
+  createPromise('i', firstDelay)
   .then(({ position, delay }) => {
-    Notify.success(`✅ Fulfilled promise ${i} in ${delay}ms`);
+    Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
   })
   .catch(({ position, delay }) => {
-    Notify.failure(`❌ Rejected promise ${i} in ${delay}ms`);
+    Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
   });
   firstDelay += stepDelay;  
 }
