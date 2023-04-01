@@ -12,9 +12,7 @@ const secondOn =document.querySelector("span[data-seconds]");
 
 // const date = new Date();
 let timer = null;
-
-
-
+let pickDate = 0;
 
 const options = {
     enableTime: true,
@@ -23,7 +21,8 @@ const options = {
     minuteIncrement: 1,
 
   onClose(selectedDates){
-    if (selectedDates[0] <= new Date()) {
+    pickDate = selectedDates[0]
+    if (selectedDates[0] < new Date()) {
 Notiflix.Notify.failure("Please choose a date in the future");
 startBtn.disabled =true;}
  else{
@@ -57,6 +56,9 @@ function createTimer() {
 
 flatpickr('input#datetime-picker', options);
 
+function addLeadingZero(value){
+  return String(value).padStart(2,"0")
+};
 function convertMs(ms) {
     // Number of milliseconds per unit of time
     const second = 1000;
@@ -78,6 +80,4 @@ function convertMs(ms) {
   
 
 
-  function addLeadingZero(value){
-    return String(value).padStart(2.0)
-  };
+  
