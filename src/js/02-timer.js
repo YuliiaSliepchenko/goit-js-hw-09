@@ -21,31 +21,36 @@ const options = {
     minuteIncrement: 1,
 
   onClose(selectedDates){
-    pickDate = selectedDates[0]
-    if (selectedDates[0] < new Date()) {
+
+  pickDate = selectedDates[0]
+
+    if (selectedDates[0] <= new Date()) {
 Notiflix.Notify.failure("Please choose a date in the future");
-startBtn.disabled =true;}
- else{
+startBtn.disabled =true;
+
+}else{
 startBtn.disabled = false;
+
 startBtn.addEventListener("click", createTimer);
 
 function createTimer() {
     timer = setInterval(() => {
 
         startBtn.disabled = true;
-        const currentTime =Date.now();
-        const finishTime = selectedDates[0];
-        const ms = finishTime - currentTime;
 
-        const {days , hours, minutes,seconds} = convertMs(ms)
+        const currentTime = new Date();
+        const finishTime = selectedDates[0];
+        const difference = finishTime - currentTime;
+
+        const {days , hours, minutes,seconds} = convertMs(difference)
         dayOn.textContent =addLeadingZero(days);
         hourOn.textContent = addLeadingZero(hours);
         minOn.textContent = addLeadingZero(minutes);
         secondOn.textContent =addLeadingZero(seconds);
 
-    if (ms < 1000) {
+    if (difference <= 1000) {
         clearInterval(timer);
-        startBtn.disabled = false;
+        startBtn.disabled = false;  
     }
     },1000)
     }
