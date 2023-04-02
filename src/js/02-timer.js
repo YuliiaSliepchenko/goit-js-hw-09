@@ -51,6 +51,8 @@ function createTimer() {
     if (difference <= 1000) {
         clearInterval(timer);
         startBtn.disabled = false;  
+        return;
+        
     }
     },1000)
     }
