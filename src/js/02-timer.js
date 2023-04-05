@@ -12,6 +12,7 @@ const secondOn =document.querySelector("span[data-seconds]");
 
 // const date = new Date();
 let timer = null;
+
 let pickDate = 0;
 
 const options = {
@@ -30,6 +31,9 @@ startBtn.disabled =true;
 
 }else{
 startBtn.disabled = false;
+}
+  }
+}
 
 startBtn.addEventListener("click", createTimer);
 
@@ -39,7 +43,7 @@ function createTimer() {
         startBtn.disabled = true;
 
         const currentTime = new Date();
-        const finishTime = selectedDates[0];
+        const finishTime = pickDate;
         const difference = finishTime - currentTime;
 
         const {days , hours, minutes,seconds} = convertMs(difference)
@@ -49,16 +53,16 @@ function createTimer() {
         secondOn.textContent =addLeadingZero(seconds);
 
     if (difference <= 1000) {
+      console.log(timer);
         clearInterval(timer);
         startBtn.disabled = false;  
         return;
         
     }
     },1000)
-    }
- }
-  }
-}
+  } 
+
+
 
 
 flatpickr('input#datetime-picker', options);
