@@ -3,17 +3,16 @@ import "flatpickr/dist/flatpickr.min.css";
 import Notiflix from 'notiflix';
 
 const startBtn = document.querySelector("[data-start]");
-const dayOn = document.querySelector("span[data-days]");
-const hourOn = document.querySelector("span[data-hours]");
-const minOn = document.querySelector("span[data-minutes]");
-const secondOn =document.querySelector("span[data-seconds]");
-
-
-
-// const date = new Date();
+// const dayOn = document.querySelector("span[data-days]");
+// const hourOn = document.querySelector("span[data-hours]");
+// const minOn = document.querySelector("span[data-minutes]");
+// const secondOn =document.querySelector("span[data-seconds]");
+const daysOn = document.querySelectorAll(".value");
+console.dir(daysOn)
 let timer = null;
-
 let pickDate = 0;
+
+startBtn.disabled =true;
 
 const options = {
     enableTime: true,
@@ -47,10 +46,10 @@ function createTimer() {
         const difference = finishTime - currentTime;
 
         const {days , hours, minutes,seconds} = convertMs(difference)
-        dayOn.textContent =addLeadingZero(days);
-        hourOn.textContent = addLeadingZero(hours);
-        minOn.textContent = addLeadingZero(minutes);
-        secondOn.textContent =addLeadingZero(seconds);
+        daysOn[0].textContent =addLeadingZero(days);
+        daysOn[1].textContent = addLeadingZero(hours);
+        daysOn[2].textContent = addLeadingZero(minutes);
+        daysOn[3].textContent =addLeadingZero(seconds);
 
     if (difference <= 1000) {
       console.log(timer);
@@ -61,9 +60,6 @@ function createTimer() {
     }
     },1000)
   } 
-
-
-
 
 flatpickr('input#datetime-picker', options);
 
